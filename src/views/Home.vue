@@ -49,7 +49,7 @@ export default {
             if(data.data.serie.length > 0) {
                 this.value = await data.data.serie[0].valor
             } else {
-                this.value = "uvailable"
+                this.value = "unavailable"
             }
           } catch(err) {
             // eslint-disable-next-line no-console
