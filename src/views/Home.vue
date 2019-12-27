@@ -1,26 +1,29 @@
 <template>
   <div>
-      <v-layout :wrap="true">
-          <v-flex xs12>
-              <v-card>
-                  <v-date-picker
-                  v-model="date"
-                  full-width
-                  :min="min"
-                  :max="max"
-                  @change="getDolar(date)"
-                  >
+      <v-container>
+          <v-layout :wrap="true">
+            <v-flex xs12>
+                <v-card>
+                    <v-date-picker
+                    v-model="date"
+                    full-width
+                    :min="min"
+                    :max="max"
+                    @change="getDolar(date)"
+                    color="success"
+                    >
 
-                  </v-date-picker>
-              </v-card>
-               <v-card color="error"
-                  dark>
-                    <v-card-text class="display-1 text-center">
-                      Dolar price:  {{value}}
-                    </v-card-text>
-              </v-card>
-          </v-flex>
-      </v-layout>
+                    </v-date-picker>
+                </v-card>
+                <v-card color="info"
+                    dark>
+                        <v-card-text class="display-1 text-center">
+                        Dolar price:  {{value}}
+                        </v-card-text>
+                </v-card>
+            </v-flex>
+         </v-layout>
+      </v-container>
   </div>
 </template>
 
@@ -45,8 +48,6 @@ export default {
             let data = await axios.get(`https://mindicador.cl/api/dolar/${ddmmyy}`)
             if(data.data.serie.length > 0) {
                 this.value = await data.data.serie[0].valor
-                            // eslint-disable-next-line no-console
-                            console.log(this.value);
             } else {
                 this.value = "No results available"
             }
